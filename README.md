@@ -36,3 +36,68 @@
 | SumCyclomaticModified | Sum of Modified Cyclomatic Complexity of all nested functions  |
 | SumCyclomaticStrict   | Sum of Strict Cyclomatic Complexity of all nested functions    |
 | SumEssential          | Sum of Essential Complexity of all nested functions            |
+
+# Metrics Details of AEEEM Dataset
+| **Abbreviation**                   | **Description**                                                                    |
+| ---------------------------------- | ---------------------------------------------------------------------------------- |
+| ck\_oo\_wmc                        | Weighted method count                                                              |
+| ck\_oo\_dit                        | Depth of inheritance tree                                                          |
+| ck\_oo\_rfc                        | Response for class                                                                 |
+| ck\_oo\_noc                        | Number of children                                                                 |
+| ck\_oo\_cbo                        | Coupling between objects                                                           |
+| ck\_oo\_lcom                       | Lack of cohesion in methods                                                        |
+| ck\_oo\_fanin                      | Number of other classes that reference the class                                   |
+| ck\_oo\_fanout                     | Number of other classes referenced by the class                                    |
+| ck\_oo\_noa                        | Number of attributes                                                               |
+| ck\_oo\_nopa                       | Number of public attributes                                                        |
+| ck\_oo\_nopra                      | Number of private attributes                                                       |
+| ck\_oo\_noai                       | Number of attributes inherited                                                     |
+| ck\_oo\_loc                        | Number of lines of code                                                            |
+| ck\_oo\_nom                        | Number of methods                                                                  |
+| ck\_oo\_nopm                       | Number of public methods                                                           |
+| ck\_oo\_noprm                      | Number of private methods                                                          |
+| ck\_oo\_nomt                       | Number of methods inherited                                                        |
+| WCHU\_wmc                          | Weighted churn of weighted method count                                            |
+| WCHU\_dit                          | Weighted churn of depth of inheritance tree                                        |
+| WCHU\_rfc                          | Weighted churn of response for class                                               |
+| WCHU\_noc                          | Weighted churn of number of children                                               |
+| WCHU\_cbo                          | Weighted churn of coupling between objects                                         |
+| WCHU\_lcom                         | Weighted churn of lack of cohesion in methods                                      |
+| WCHU\_fanin                        | Weighted churn of number of other classes that reference the class                 |
+| WCHU\_fanout                       | Weighted churn of number of other classes referenced by the class                  |
+| WCHU\_noa                          | Weighted churn of number of attributes                                             |
+| WCHU\_nopa                         | Weighted churn of number of public attributes                                      |
+| WCHU\_nopra                        | Weighted churn of number of private attributes                                     |
+| WCHU\_noai                         | Weighted churn of number of attributes inherited                                   |
+| WCHU\_loc                          | Weighted churn of number of lines of code                                          |
+| WCHU\_nom                          | Weighted churn of number of methods                                                |
+| WCHU\_nopm                         | Weighted churn of number of public methods                                         |
+| WCHU\_noprm                        | Weighted churn of number of private methods                                        |
+| WCHU\_nomt                         | Weighted churn of number of methods inherited                                      |
+| LDHH\_wmc                          | Linear decayed history entropy of weighted method count                            |
+| LDHH\_dit                          | Linear decayed history entropy of depth of inheritance tree                        |
+| LDHH\_rfc                          | Linear decayed history entropy of response for class                               |
+| LDHH\_noc                          | Linear decayed history entropy of number of children                               |
+| LDHH\_cbo                          | Linear decayed history entropy of coupling between objects                         |
+| LDHH\_lcom                         | Linear decayed history entropy of lack of cohesion in methods                      |
+| LDHH\_fanin                        | Linear decayed history entropy of number of other classes that reference the class |
+| LDHH\_fanout                       | Linear decayed history entropy of number of other classes referenced by the class  |
+| LDHH\_noa                          | Linear decayed history entropy of number of attributes                             |
+| LDHH\_nopa                         | Linear decayed history entropy of number of public attributes                      |
+| LDHH\_nopra                        | Linear decayed history entropy of number of private attributes                     |
+| LDHH\_noai                         | Linear decayed history entropy of number of attributes inherited                   |
+| LDHH\_loc                          | Linear decayed history entropy of number of lines of code                          |
+| LDHH\_nom                          | Linear decayed history entropy of number of methods                                |
+| LDHH\_nopm                         | Linear decayed history entropy of number of public methods                         |
+| LDHH\_noprm                        | Linear decayed history entropy of number of private methods                        |
+| LDHH\_nomt                         | Linear decayed history entropy of number of methods inherited                      |
+| CvsEntropy                         | Entropy of CVS change log                                                          |
+| CvsWEntropy                        | Weighted Entropy of CVS change log                                                 |
+| CvsLogEntropy                      | Logarithmic Entropy of CVS change log                                              |
+| CvsExpEntropy                      | Exponential Entropy of CVS change log                                              |
+| CvsLinEntropy                      | Linear Entropy of CVS change log                                                   |
+| numberOfNonTrivialBugsFoundUntil   | Number of non-trivial bugs found until the corresponding fix                       |
+| numberOfCriticalBugsFoundUntil     | Number of critical bugs found until the corresponding fix                          |
+| numberOfHighPriorityBugsFoundUntil | Number of high priority bugs found until the corresponding fix                     |
+| numberOfMajorBugsFoundUntil        | Number of major bugs found until the corresponding fix                             |
+| numberOfBugsFoundUntil             | Number of bugs found until the corresponding fix                                   |

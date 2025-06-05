@@ -101,3 +101,72 @@
 | numberOfHighPriorityBugsFoundUntil | Number of high priority bugs found until the corresponding fix                     |
 | numberOfMajorBugsFoundUntil        | Number of major bugs found until the corresponding fix                             |
 | numberOfBugsFoundUntil             | Number of bugs found until the corresponding fix                                   |
+
+#Metrics Details of JIRA Dataset
+| **Abbreviation**          | **Description**                                                            |
+| ------------------------- | -------------------------------------------------------------------------- |
+| AvgCyclomatic             | Average cyclomatic complexity for all nested functions or methods          |
+| SumCyclomatic             | Sum of cyclomatic complexity of all nested functions or methods            |
+| AvgCyclomaticModified     | Average modified cyclomatic complexity for all nested functions or methods |
+| SumCyclomaticModified     | Sum of modified cyclomatic complexity of all nested functions              |
+| AvgCyclomaticStrict       | Average strict cyclomatic complexity for all nested functions or methods   |
+| SumCyclomaticStrict       | Sum of strict cyclomatic complexity of all nested functions or methods     |
+| AvgEssential              | Average essential complexity for all nested functions or methods           |
+| SumEssential              | Sum of essential complexity of all nested functions or methods             |
+| AvgLine                   | Average number of lines for all nested functions or methods                |
+| AvgLineBlank              | Average number of blank lines for all nested functions or methods          |
+| AvgLineCode               | Average number of lines containing source code for all nested functions    |
+| AvgLineComment            | Average number of comment lines for all nested functions or methods        |
+| CountClassBase            | Number of immediate base classes                                           |
+| CountClassCoupled         | Number of other classes coupled to                                         |
+| CountClassDerived         | Number of immediate subclasses                                             |
+| MaxInheritanceTree        | Maximum depth of class in inheritance tree                                 |
+| PercentLackOfCohesion     | 100% minus the average cohesion for package entities                       |
+| CountDeclClass            | Number of classes                                                          |
+| CountDeclClassMethod      | Number of class methods                                                    |
+| CountDeclClassVariable    | Number of class variables                                                  |
+| CountDeclFunction         | Number of functions                                                        |
+| CountDeclInstanceMethod   | Number of instance methods                                                 |
+| CountDeclInstanceVariable | Number of instance variables                                               |
+| CountDeclMethod           | Number of local (non-inherited) methods                                    |
+| CountDeclMethodDefault    | Number of local default methods                                            |
+| CountDeclMethodPrivate    | Number of local (non-inherited) private methods                            |
+| CountDeclMethodProtected  | Number of local protected methods                                          |
+| CountDeclMethodPublic     | Number of local (non-inherited) public methods                             |
+| CountLine                 | Number of physical lines                                                   |
+| CountLineBlank            | Number of blank lines                                                      |
+| CountLineCode             | Number of lines containing source code                                     |
+| CountLineCodeDecl         | Number of lines containing declarative source code                         |
+| CountLineCodeExe          | Number of lines containing executable source code                          |
+| CountLineComment          | Number of lines containing comment                                         |
+| CountSemicolon            | Number of semicolons                                                       |
+| CountStmt                 | Number of statements                                                       |
+| CountStmtDecl             | Number of declarative statements                                           |
+| CountStmtExe              | Number of executable statements                                            |
+| MaxCyclomatic             | Maximum cyclomatic complexity of all nested functions or methods           |
+| MaxCyclomaticModified     | Maximum modified cyclomatic complexity of nested functions or methods      |
+| MaxCyclomaticStrict       | Maximum strict cyclomatic complexity of nested functions or methods        |
+| RatioCommentToCode        | Ratio of comment lines to code lines                                       |
+| CountInput\_Min           | Min number of calling subprograms plus global variables read               |
+| CountInput\_Mean          | Mean number of calling subprograms plus global variables read              |
+| CountInput\_Max           | Max number of calling subprograms plus global variables read               |
+| CountOutput\_Min          | Min number of called subprograms plus global variables set                 |
+| CountOutput\_Mean         | Mean number of called subprograms plus global variables set                |
+| CountOutput\_Max          | Max number of called subprograms plus global variables set                 |
+| CountPath\_Min            | Min number of unique paths through a body of code                          |
+| CountPath\_Mean           | Mean number of unique paths through a body of code                         |
+| CountPath\_Max            | Max number of unique paths through a body of code                          |
+| MaxNesting\_Min           | Min of maximum nesting level of control constructs in the function         |
+| MaxNesting\_Mean          | Mean of maximum nesting level of control constructs in the function        |
+| MaxNesting\_Max           | Max of maximum nesting level of control constructs in the function         |
+| COMM                      | Number of Git commits                                                      |
+| ADDED\_LINES              | Normalized number of lines added to the module                             |
+| DEL\_LINES                | Normalized number of lines deleted from the module                         |
+| ADEV                      | Number of active developers                                                |
+| DDEV                      | Number of distinct developers                                              |
+| MINOR\_COMMIT             | Developers contributing <5% of total code changes                          |
+| MINOR\_LINE               | Developers contributing <5% of total LOC                                   |
+| MAJOR\_COMMIT             | Developers contributing >5% of total code changes                          |
+| MAJOR\_LINES              | Developers contributing >5% of total LOC                                   |
+| OWN\_COMMIT               | Proportion of code changes by top contributor                              |
+| OWN\_LINE                 | Proportion of lines of code by top contributor                             |

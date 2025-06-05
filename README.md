@@ -102,7 +102,7 @@
 | numberOfMajorBugsFoundUntil        | Number of major bugs found until the corresponding fix                             |
 | numberOfBugsFoundUntil             | Number of bugs found until the corresponding fix                                   |
 
-#Metrics Details of JIRA Dataset
+# Metrics Details of JIRA Dataset
 | **Abbreviation**          | **Description**                                                            |
 | ------------------------- | -------------------------------------------------------------------------- |
 | AvgCyclomatic             | Average cyclomatic complexity for all nested functions or methods          |

@@ -172,7 +172,7 @@
 | OWN\_LINE                 | Proportion of lines of code by top contributor                             |
 
 
-# Selected sources for each target under CDA vs. Random selection strategies.
+# Selected source for each target under CDA vs. Random selection strategies.
 
 | Target             | CDA-Source Selected   | Random-Source Selected |
 |--------------------|-----------------------|------------------------|

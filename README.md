@@ -170,3 +170,24 @@
 | MAJOR\_LINES              | Developers contributing >5% of total LOC                                   |
 | OWN\_COMMIT               | Proportion of code changes by top contributor                              |
 | OWN\_LINE                 | Proportion of lines of code by top contributor                             |
+
+
+# Selected sources for each target under CDA vs. Random selection strategies.
+
+| Target             | CDA-Source Selected   | Random-Source Selected |
+|--------------------|-----------------------|------------------------|
+| Apache             | Zxing                 | Safe                   |
+| Safe               | Apache                | Zxing                  |
+| Zxing              | Apache                | Safe                   |
+| equinox            | pde                   | mylyn                  |
+| jdt                | pde                   | lucene                 |
+| lucene             | pde                   | equinox                |
+| mylyn              | pde                   | equinox                |
+| pde                | equinox               | mylyn                  |
+| activemq-5         | wicket-1              | groovy-1_6_BETA_1      |
+| derby-10           | groovy-1_6_BETA_1     | hbase-0                |
+| groovy-1_6_BETA_1  | jruby-1               | derby-10               |
+| hbase-0            | hive-0                | wicket-1               |
+| hive-0             | hbase-0               | activemq-5             |
+| jruby-1            | groovy-1_6_BETA_1     | derby-10               |
+| wicket-1           | activemq-5            | groovy-1_6_BETA_1      |

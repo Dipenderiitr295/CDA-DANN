@@ -171,6 +171,30 @@
 | OWN\_COMMIT               | Proportion of code changes by top contributor                              |
 | OWN\_LINE                 | Proportion of lines of code by top contributor                             |
 
+# Metrics Details of PROMISE Dataset
+| **Abbreviation** | **Description** |
+|------------------|-----------------|
+| WMC              | Weighted Methods per Class |
+| DIT              | Depth of Inheritance Tree |
+| NOC              | Number of Children |
+| CBO              | Coupling Between Object Classes |
+| RFC              | Response for a Class |
+| LCOM             | Lack of Cohesion in Methods |
+| CA               | Afferent Couplings |
+| CE               | Efferent Couplings |
+| NPM              | Number of Public Methods |
+| LCOM3            | Lack of Cohesion in Methods (variant of LCOM) |
+| LOC              | Lines of Code |
+| DAM              | Data Access Metric |
+| MOA              | Measure of Aggregation |
+| MFA              | Measure of Functional Abstraction |
+| CAM              | Cohesion Among Methods of a Class |
+| IC               | Inheritance Coupling |
+| CBM              | Coupling Between Methods |
+| AMC              | Average Method Complexity |
+| CC               | McCabe’s Cyclomatic Complexity |
+| MAX_CC           | Maximum Value of CC Among Methods in the Class |
+| AVG_CC           | Average (Arithmetic Mean) CC of Methods in the Class |
 
 # Selected source for each target under CDA vs. Random selection strategies.
 

@@ -7,6 +7,9 @@
 
 
 3 JIRA dataset :"Yatish, Suraj, et al. "Mining software defects: Should we consider affected releases?." 2019 IEEE/ACM 41st international conference on software engineering (ICSE). IEEE, 2019".
+
+4 T. Menzies, R. Krishna, and D. Pryor, “The promise repository of empirical software engineering data (2015),” URL http://promisedata.googlecode. com, 2015.
+
 # Metrics Details of ReLink Dataset
 | **Abbreviation**      | **Description**                                                |
 | --------------------- | -------------------------------------------------------------- |

@@ -199,22 +199,29 @@
 | MAX_CC           | Maximum Value of CC Among Methods in the Class |
 | AVG_CC           | Average (Arithmetic Mean) CC of Methods in the Class |
 
-# Selected source for each target under CDA vs. Random selection strategies.
+# Selected source for each target under CDA, Random, MMD, CD, and KL.
 
-| Target             | CDA-Source Selected   | Random-Source Selected |
-|--------------------|-----------------------|------------------------|
-| Apache             | Zxing                 | Safe                   |
-| Safe               | Apache                | Zxing                  |
-| Zxing              | Apache                | Safe                   |
-| equinox            | pde                   | mylyn                  |
-| jdt                | pde                   | lucene                 |
-| lucene             | pde                   | equinox                |
-| mylyn              | pde                   | equinox                |
-| pde                | equinox               | mylyn                  |
-| activemq-5         | wicket-1              | groovy-1_6_BETA_1      |
-| derby-10           | groovy-1_6_BETA_1     | hbase-0                |
-| groovy-1_6_BETA_1  | jruby-1               | derby-10               |
-| hbase-0            | hive-0                | wicket-1               |
-| hive-0             | hbase-0               | activemq-5             |
-| jruby-1            | groovy-1_6_BETA_1     | derby-10               |
-| wicket-1           | activemq-5            | groovy-1_6_BETA_1      |
+| Target                | CDA                 | Random               | MMD                  | CS                   | KL                   |
+|-----------------------|---------------------|----------------------|----------------------|----------------------|----------------------|
+| Apache                | Zxing               | Safe                 | Zxing                | Safe                 | Safe                 |
+| Safe                  | Apache              | Zxing                | Zxing                | Apache               | Zxing                |
+| Zxing                 | Apache              | Safe                 | Apache               | Apache               | Safe                 |
+| equinox               | pde                 | mylyn                | lucene               | lucene               | pde                  |
+| jdt                   | pde                 | lucene               | lucene               | lucene               | mylyn                |
+| lucene                | pde                 | equinox              | equinox              | jdt                  | pde                  |
+| mylyn                 | pde                 | equinox              | jdt                  | jdt                  | jdt                  |
+| pde                   | equinox             | mylyn                | equinox              | lucene               | equinox              |
+| activemq-5            | wicket-1            | groovy-1_6_BETA_1    | wicket-1             | hive-0               | wicket-1             |
+| derby-10              | hive-0              | hbase-0              | jruby-1              | wicket-1             | groovy-1_6_BETA_1    |
+| groovy-1_6_BETA_1     | jruby-1             | derby-10             | hive-0               | jruby-1              | derby-10             |
+| hbase-0               | hive-0              | wicket-1             | hive-0               | jruby-1              | wicket-1             |
+| hive-0                | hbase-0             | activemq-5           | hbase-0              | groovy-1_6_BETA_1    | hbase-0              |
+| jruby-1               | groovy-1_6_BETA_1   | derby-10             | activemq-5           | groovy-1_6_BETA_1    | wicket-1             |
+| wicket-1              | activemq-5          | groovy-1_6_BETA_1    | groovy-1_6_BETA_1    | hbase-0              | activemq             |
+| ant-1                 | xalan-2             | synapse-1            | log4j-1              | log4j-1              | log4j-1              |
+| ivy-2                 | xalan-2             | ant-1                | jedit-4              | synapse-1            | synapse-1            |
+| jedit-4               | xalan-2             | ant-1                | xalan-2              | synapse-1            | log4j-1              |
+| log4j-1               | ant-1               | synapse-1            | ivy-2                | ant-1                | ant-1                |
+| synapse-1             | ant-1               | ivy-2                | ivy-2                | log4j-1              | xalan-2              |
+| tomcat                | xalan-2             | ant-1                | jedit-4              | ivy-2                | xalan-2              |
+| xalan-2               | jedit-4             | tomcat               | jedit-4              | jedit-4              | synapse-1            |

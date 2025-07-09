@@ -199,7 +199,7 @@
 | MAX_CC           | Maximum Value of CC Among Methods in the Class |
 | AVG_CC           | Average (Arithmetic Mean) CC of Methods in the Class |
 
-# Selected source for each target under CDA, Random, MMD, CD, and KL.
+# Selected Source project for each Target Project under CDA, Random, MMD, CS, and KL.
 
 | Target                | CDA                 | Random               | MMD                  | CS                   | KL                   |
 |-----------------------|---------------------|----------------------|----------------------|----------------------|----------------------|

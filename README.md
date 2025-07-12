@@ -201,27 +201,27 @@
 
 # Selected Source project for each Target Project under CDA, Random, MMD, CS, and KL.
 
-| Target                | CDA                 | Random               | MMD                  | CS                   | KL                   |
-|-----------------------|---------------------|----------------------|----------------------|----------------------|----------------------|
-| Apache                | Zxing               | Safe                 | Zxing                | Safe                 | Safe                 |
-| Safe                  | Apache              | Zxing                | Zxing                | Apache               | Zxing                |
-| Zxing                 | Apache              | Safe                 | Apache               | Apache               | Safe                 |
-| equinox               | pde                 | mylyn                | lucene               | lucene               | pde                  |
-| jdt                   | pde                 | lucene               | lucene               | lucene               | mylyn                |
-| lucene                | pde                 | equinox              | equinox              | jdt                  | pde                  |
-| mylyn                 | pde                 | equinox              | jdt                  | jdt                  | jdt                  |
-| pde                   | equinox             | mylyn                | equinox              | lucene               | equinox              |
-| activemq-5            | wicket-1            | groovy-1_6_BETA_1    | wicket-1             | hive-0               | wicket-1             |
-| derby-10              | hive-0              | hbase-0              | jruby-1              | wicket-1             | groovy-1_6_BETA_1    |
-| groovy-1_6_BETA_1     | jruby-1             | derby-10             | hive-0               | jruby-1              | derby-10             |
-| hbase-0               | hive-0              | wicket-1             | hive-0               | jruby-1              | wicket-1             |
-| hive-0                | hbase-0             | activemq-5           | hbase-0              | groovy-1_6_BETA_1    | hbase-0              |
-| jruby-1               | groovy-1_6_BETA_1   | derby-10             | activemq-5           | groovy-1_6_BETA_1    | wicket-1             |
-| wicket-1              | activemq-5          | groovy-1_6_BETA_1    | groovy-1_6_BETA_1    | hbase-0              | activemq             |
-| ant-1                 | xalan-2             | synapse-1            | log4j-1              | log4j-1              | log4j-1              |
-| ivy-2                 | xalan-2             | ant-1                | jedit-4              | synapse-1            | synapse-1            |
-| jedit-4               | xalan-2             | ant-1                | xalan-2              | synapse-1            | log4j-1              |
-| log4j-1               | ant-1               | synapse-1            | ivy-2                | ant-1                | ant-1                |
-| synapse-1             | ant-1               | ivy-2                | ivy-2                | log4j-1              | xalan-2              |
-| tomcat                | xalan-2             | ant-1                | jedit-4              | ivy-2                | xalan-2              |
-| xalan-2               | jedit-4             | tomcat               | jedit-4              | jedit-4              | synapse-1            |
+| Target                | CDA            | Random         | MMD               | Chi-square         | KL             |
+|-----------------------|----------------|----------------|--------------------|---------------------|----------------|
+| Apache                | Zxing          | Safe           | Zxing              | Safe                | Safe           |
+| Safe                  | Apache         | Zxing          | Zxing              | Apache              | Zxing          |
+| Zxing                 | Apache         | Safe           | Apache             | Apache              | Safe           |
+| equinox               | pde            | mylyn          | lucene             | lucene              | pde            |
+| jdt                   | pde            | mylyn          | lucene             | lucene              | mylyn          |
+| lucene                | pde            | mylyn          | jdt                | equinox             | pde            |
+| mylyn                 | pde            | equinox        | jdt                | jdt                 | jdt            |
+| pde                   | equinox        | mylyn          | equinox            | lucene              | equinox        |
+| activemq-5.8.0.csv    | wicket-1       | hive-0         | derby-10           | jruby-1             | derby-10       |
+| derby-10.5.1.1.csv    | jruby-1        | wicket-1       | groovy-1_6_BETA_2  | hbase-0             | activemq-5     |
+| groovy-1_6_BETA_2.csv | wicket-1       | jruby          | hbase-0            | hbase-0             | derby-10       |
+| hbase-0.95.2.csv      | hive-0         | groovy-1_6_BETA_2 | hive-0          | groovy-1_6_BETA_2   | hive-0         |
+| hive-0.12.0.csv       | hbase-0        | wicket-1       | hbase-0            | jruby-1             | activemq-5     |
+| jruby-1.7.0.preview1.csv | groovy-1_6_BETA_2 | hbase-0   | groovy-1_6_BETA_2  | groovy-1_6_BETA_2   | hbase-0        |
+| wicket-1.5.3.csv      | jruby-1        | hive-0         | derby-10           | hbase-0             | activemq-5     |
+| ant-1.7.csv           | camel-1        | camel-1        | camel-1            | jedit-4             | camel-1        |
+| camel-1.6.csv         | ant-1          | jedit-4        | ant-1              | jedit-4             | ant-1          |
+| jedit-4.3.csv         | ant-1          | camel-1        | velocity-1         | velocity-1          | camel-1        |
+| prop-2.csv            | ant-1          | jedit-4        | velocity-1         | xalan-2             | xalan-2        |
+| velocity-1.6.csv      | ant-1          | xerces-1       | camel-1            | xerces-1            | jedit-4        |
+| xalan-2.7.csv         | ant-1          | jedit-4        | camel-1            | jedit-4             | jedit-4        |
+| xerces-1.4.csv        | ant-1          | jedit-4        | velocity-1         | velocity-1          | jedit-4        |

@@ -1,149 +1,163 @@
-# Import necessary libraries
 import os
 import glob
+import yaml
 import pandas as pd
 import numpy as np
+from imblearn.over_sampling import SMOTE  
+from scipy.stats import ks_2samp
+from sklearn.preprocessing import StandardScaler,MinMaxScaler
+from torch.utils.data import TensorDataset, DataLoader
+import torch.nn as nn
 
-# --- Data Preprocessing Functions ---
-def read_csv(file_path):
-    """
-    Attempt to read a CSV file using various delimiters.
-    Return a DataFrame if successful; otherwise, return an empty DataFrame.
-    """
-    # try different delimiters
-    # if label column exists:
-    #     optionally encode categorical columns
-    # return dataframe
-    pass
+def read_data(file_path: str, delimiters=None) -> pd.DataFrame:
+    if delimiters is None:
+        delimiters = [',', ';', r'\s+']
+    for d in delimiters:
+        try:
+            if d == r'\s+':
+                df = pd.read_csv(file_path, delim_whitespace=True, engine='python')
+            else:
+                df = pd.read_csv(file_path, sep=d, engine='python')
+            # optionally: label‑encode categorical cols here
+            return df
+        except Exception:
+            continue
+    return pd.DataFrame()
 
-def preprocess_data(file_path):
+def preprocess(df: pd.DataFrame, label_col: str) -> pd.DataFrame:
     """
-    Load data using read_csv, convert defect counts to binary labels,
-    and retain only numeric columns while removing missing values.
+    Binarize `label_col`, drop non‑numeric columns, and drop NA.
     """
-    # for preprocessing
-    df = read_csv(file_path)
-    if df is empty or missing label:
-        return empty dataframe
-    # Convert defect counts to binary labels and drop missing values
-    return processed_df
+    if label_col not in df:
+        return pd.DataFrame()
+    # binarize; e.g. df[label_col] = (df[label_col] > 0).astype(int)
+    # drop non‑numeric columns
+    return df.select_dtypes(include=[np.number]).dropna()
 
-def normalize_data(df):
-    """
-    Split the DataFrame into features and label.
-    Standardize features and return the normalized DataFrame.
-    """
-    # for normalization
+def normalize(df: pd.DataFrame, label_col: str):
+    y = df[label_col].values
+    X = df.drop(columns=[label_col]).values
+    scaler = StandardScaler().fit(X)
+    Xs = scaler.transform(X)
+    norm_df = pd.DataFrame(Xs, columns=df.columns.drop(label_col))
+    norm_df[label_col] = y
     return norm_df, scaler
 
-def apply_smote_and_normalize(df):
+def balance_and_normalize(df: pd.DataFrame, label_col: str, sampler=None):
+    if sampler is None:
+        sampler = SMOTE()  # or pass in from config
+    X = df.drop(columns=[label_col]).values
+    y = df[label_col].values
+    X_res, y_res = sampler.fit_resample(X, y)
+    df_res = pd.DataFrame(X_res, columns=df.columns.drop(label_col))
+    df_res[label_col] = y_res
+    return normalize(df_res, label_col)[0]
+def compute_similarity(src: pd.DataFrame, tgt: pd.DataFrame) -> float:
     """
-    Apply SMOTE oversampling to balance classes and then normalize the data.
+    Composite score combining:
+      1. Frobenius norm between correlation matrices.
+      2. Mean KS‑statistic across shared features.
     """
-    # for applying SMOTE and normalization
-    return norm_df
+    common = src.columns.intersection(tgt.columns).drop('label')
+    C_src = src[common].corr().fillna(0).values
+    C_tgt = tgt[common].corr().fillna(0).values
+    corr_dist = np.linalg.norm(C_src - C_tgt, ord='fro')
+    ks_vals = [ks_2samp(src[c], tgt[c]).statistic for c in common]
+    ks_mean = float(np.mean(ks_vals)) if ks_vals else 0.0
+    return corr_dist,ks_mean
+    
+class GradientReversal(Function):
+    @staticmethod
+    def forward(ctx, x, lambd):
+        ctx.lambd = lambd
+        return x.view_as(x)
+    @staticmethod
+    def backward(ctx, grad):
+        return -ctx.lambd * grad, None
 
-# --- Similarity Computation ---
-def compute_similarity(source_df, target_df):
-    """
-    Compute a composite similarity score between source and target:
-      - Structural similarity via correlation matrices and Frobenius norm.
-      - Marginal similarity via KS test statistics across features.
-    """
-    # for similarity computation
-    return composite_score
+def grad_reverse(x, lambd=1.0):
+    return GradientReversal.apply(x, lambd)
 
-# --- DANN Model Definition  ---
-class DANN:
-    def __init__(self, input_dim):
-        """
-        Initialize the DANN model with:
-          - Feature extractor (fully connected layer, activation, dropout)
-          - Label predictor (hidden layer, activation, Sigmoid output)
-          - Domain classifier (hidden layer, activation, Sigmoid output)
-        """
-        # Initialize model layers
+class DANN(nn.Module):
+    def __init__(self, input_dim, feature_dim, hidden_dim, dropout_rate):
+        super().__init__()
+        self.feature = nn.Sequential()
+        self.label = nn.Sequential()
+        self.domain = nn.Sequential()
         pass
 
-    def forward(self, x, lambda_value):
-        """
-        Forward pass:
-          - Extract features
-          - Get label predictions from the features
-          - Apply gradient reversal on features and get domain predictions
-        """
-        # return label_output, domain_output
+    def forward(self, x, lambd=0.0):
+        feats = self.feature(x)
+        y_out = self.label(feats)
+        d_out = self.domain(grad_reverse(feats, lambd))
+        return y_out, d_out
         pass
 
-def train_dann(model, source_loader, target_loader):
-    """
-    Train the DANN model using a combination of label prediction loss
-    and domain classification loss.
-    """
-    # For each epoch and each batch, compute losses, backpropagate, and update model
-    return trained_model
+def train_dann(model, src_loader, tgt_loader, cfg):
+    optimizer = optim.Adam(model.parameters(), lr=cfg['lr'])
+    criterion = nn.BCELoss()
+    return model
 
-def predict_dann(model, target_features):
+def predict_dann(model, X, device='cpu'):
     """
-    Predict labels on target data using the trained DANN model.
+    Return (binary_preds, probabilities).
     """
-    # Evaluate model and return predictions
-    return predictions, probabilities
+    model.eval()
+    return np.array([]), np.array([])
+    
+def main(config_path: str):
+    cfg = load_config(config_path)
+    data_dir = cfg['data_folder']
+    label_col = cfg['label_column']
 
-# --- Main Pipeline ---
-def main():
-    # Define dataset folder and retrieve list of CSV files (projects)
-    dataset_folder = "path/to/dataset"
-    project_files = glob.glob(os.path.join(dataset_folder, "*.csv"))
-    
-    results = []  # For storing evaluation results
-    
-    # For each file, treat it as the target project
-    for target_file in project_files:
-        target_df = preprocess_data(target_file)
-        if target_df is empty or invalid:
+    files = glob.glob(os.path.join(data_dir, '*.csv'))
+    results = []
+
+    for tgt_fp in files:
+        df_raw = read_data(tgt_fp)
+        df_tgt = preprocess(df_raw, label_col)
+        if df_tgt.empty:
             continue
-        
-        # Normalize target data
-        target_norm_df, _ = normalize_data(target_df)
-        
-        # Candidate source projects: all files except the target
-        candidate_sources = [f for f in project_files if f != target_file]
-        similarity_scores = {}
-        for source_file in candidate_sources:
-            source_df = preprocess_data(source_file)
-            if source_df is empty:
+
+        df_tgt_norm, _ = normalize(df_tgt, label_col)
+
+        # find best source
+        best_score, best_src = float('inf'), None
+        for src_fp in files:
+            if src_fp == tgt_fp:
                 continue
-            source_df_processed = apply_smote_and_normalize(source_df)
-            score = compute_similarity(source_df_processed, target_norm_df)
-            similarity_scores[source_file] = score
-        
-        # Select the best source project based on the lowest similarity score
-        if similarity_scores:
-            best_source_file = select_best_source(similarity_scores)
-            # Extract features and labels from the best source and target
-            X_source, y_source = extract_features_and_labels(best_source_file)
-            X_target, y_target = extract_features_and_labels(target_file)
-            
-            # Define classifiers including DANN and traditional ML models
-            classifiers = {"DANN": "dann"}
-            for clf_name in classifiers:
-                if clf_name == "DANN":
-                    # Prepare data loaders and train DANN
-                    source_loader = create_loader(X_source, y_source)
-                    target_loader = create_loader(X_target, None)
-                    model = DANN(input_dim=X_source.shape[1])
-                    model = train_dann(model, source_loader, target_loader)
-                    predictions, prob = predict_dann(model, X_target)
-                
-                # Compute evaluation metrics and store results
-                metrics = compute_evaluation_metrics(y_target, predictions)
-                results.append(format_result(clf_name, best_source_file, target_file, metrics))
-        else:
-            # Skip target if no valid source found
+            df_src_raw = read_data(src_fp)
+            df_src = preprocess(df_src_raw, label_col)
+            if df_src.empty:
+                continue
+            df_src_bal = balance_and_normalize(df_src, label_col, sampler=SMOTE())
+            scoreFN, scoreKS = compute_similarity(df_src_bal, df_tgt_norm)
+            # Normalize FN scores and KS scores using MinMax individually
+            score=alpha*FN+(1-alpha)*KS
+            if score < best_score:
+                best_score, best_src = score, src_fp
+
+        if best_src is None:
             continue
-    
-    # Save results to an output file
+            
+        X_src, y_src = df_src_bal.drop(columns=[label_col]).values, df_src_bal[label_col].values
+        X_tgt, y_tgt = df_tgt_norm.drop(columns=[label_col]).values, df_tgt_norm[label_col].values
+        src_loader = DataLoader(TensorDataset(torch.tensor(X_src, dtype=torch.float32),
+                                             torch.tensor(y_src, dtype=torch.float32).unsqueeze(1)),
+                                batch_size=cfg['batch_size'], shuffle=True)
+        tgt_loader = DataLoader(TensorDataset(torch.tensor(X_tgt, dtype=torch.float32),
+                                             torch.zeros((len(X_tgt),1))),
+                                batch_size=cfg['batch_size'], shuffle=True)
+
+        # initialize & train DANN
+        model = DANN(input_dim=X_src.shape[1],
+                     feature_dim=cfg['feature_dim'],
+                     hidden_dim=cfg['hidden_dim'],
+                     dropout_rate=cfg['dropout'])
+        model = train_dann(model, src_loader, tgt_loader, cfg)
+        preds, probs = predict_dann(model, X_tgt)
+        # record metrics in `results`
+
+    # finally, save `results` to CSV or JSON
 
 if __name__ == "__main__":
-    main()

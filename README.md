@@ -218,7 +218,7 @@
 | hive-0.12.0       | hbase-0        | wicket-1       | hbase-0            | jruby-1             | activemq-5     |
 | jruby-1.7.0.preview1 | groovy-1_6_BETA_2 | hbase-0   | groovy-1_6_BETA_2  | groovy-1_6_BETA_2   | hbase-0        |
 | wicket-1.5.3      | jruby-1        | hive-0         | derby-10           | hbase-0             | activemq-5     |
-| ant-1.7          | camel-1        | camel-1        | camel-1            | jedit-4             | camel-1        |
+| ant-1.7          | camel-1        | jedit-4        | camel-1            | jedit-4             | camel-1        |
 | camel-1.6         | ant-1          | jedit-4        | ant-1              | jedit-4             | ant-1          |
 | jedit-4.3         | ant-1          | camel-1        | velocity-1         | velocity-1          | camel-1        |
 | prop-2           | ant-1          | jedit-4        | velocity-1         | xalan-2             | xalan-2        |

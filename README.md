@@ -199,6 +199,22 @@
 | MAX_CC           | Maximum Value of CC Among Methods in the Class |
 | AVG_CC           | Average (Arithmetic Mean) CC of Methods in the Class |
 
+
+# DANN Hyperparameter Settings
+
+| **Category**         | **Parameter**           | **Value / Description**                                 |
+|----------------------|-------------------------|----------------------------------------------------------|
+| **Architecture**     | Hidden layers           | 2                                                        |
+|                      | Neurons per layer       | 256                                                      |
+|                      | Dropout rate            | 0.6                                                      |
+| **Training**         | Optimizer               | Adam                                                     |
+|                      | Learning rate           | 0.001                                                    |
+|                      | Batch size              | 32                                                       |
+|                      | Training epochs         | 100                                                      |
+| **Domain Adaptation**| GRL schedule            | λ(p) = 2 / (1 + exp(-10p)) − 1                          |
+|                      | CDA α                   | 0.3                                                      |
+
+  
 # Selected Source project for each Target Project under CDA, Random, MMD, CS, and KL.
 
 | Target                | CDA            | Random         | MMD               | Chi-square         | KL             |
